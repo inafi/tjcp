@@ -15,6 +15,12 @@ function initialize() {
         }
     }
 
+    // year picker
+    $(".select-year .year").on("click", function () {
+        $(".select-year .year").removeClass("selected");
+        $(this).addClass("selected");
+    })
+
     var oldwidth;
     $(document).on('mouseenter', '.pdf', function () {
         var newwidth = Math.max($(this).children(".label").get(0).scrollWidth, $(window).width() * .2);
@@ -195,9 +201,20 @@ function initialize() {
                     index = 0;
                     $(id + " .pdf-move").css("transform", "translateX(0%)");
                 });
+                $('.pdf-wrap').slick({
+                    dots: true,
+                    infinite: true,
+                    centerMode: true,
+                    autoplay: true,
+                    focusOnSelect: true,
+                    autoplaySpeed: 3000,
+                    centerPadding: '0px',
+                    slidesToShow: 3
+                });
             }
 
         }
     });
+
 }
 $(initialize);
